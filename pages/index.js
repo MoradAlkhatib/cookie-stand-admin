@@ -30,7 +30,7 @@ export default function Home() {
           Cookie Stand Admin
         </header>
 
-        <section className='items-center flex justify-center '>
+        <section className='items-center flex justify-center flex-wrap'>
         <form className="bg-green-300 p-5 m-10 w-3/4 rounded-md" onSubmit={(e)=>handlerForm(e)}>
           <h2 className='text-2xl text-center font-semibold'>Create Cookie Stand</h2>
 
@@ -40,20 +40,20 @@ export default function Home() {
           </div>
           <br/>
 
-          <section className="space-x-4 flex">
+          <section className="space-x-8 ml-5 flex flex-wrap">
           <div className='grid '>
           <label className='ml-3 font-medium text-l'>Minimum Customers Per Hour</label>
-          <input name="minCustomers" type='number' className=' w-72 h-7' onChange={handleChange}/>
+          <input name="minCustomers" type='number' className='w-64 h-7' onChange={handleChange}/>
           </div>
 
           <div className='grid'>
           <label className='ml-3 font-medium text-l'>Maximum Customers Per Hour</label>
-          <input name="maxCustomers" type='number' className=' w-72 h-7' onChange={handleChange}/>
+          <input name="maxCustomers" type='number' className='w-64 h-7' onChange={handleChange}/>
           </div>
 
           <div className='grid'>
-          <label className='ml-5 font-medium text-l' for="avg">Average Customers Per Hour</label>
-          <input name="angCookies" type='number' className='w-72 h-7' onChange={handleChange}/>
+          <label className='ml-3 font-medium text-l' for="avg">Average Customers Per Hour</label>
+          <input name="angCookies" type='number' className='w-64 h-7' onChange={handleChange}/>
           </div>
           <input className='h-16 w-52 bg-green-500 font-medium text-xl' type="submit" value="Create" />
           </section>
