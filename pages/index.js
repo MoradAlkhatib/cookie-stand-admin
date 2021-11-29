@@ -1,82 +1,81 @@
 import Head from 'next/head'
-
+import { useState } from 'react'
 export default function Home() {
+  const [state, setState] = useState({ location: "", minCustomers: "" , maxCustomers:"" ,angCookies:"" });
+  const [cookie , setCookie] = useState([]);
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setState(prevState => ({
+        ...prevState,
+        [name]: value
+    }));
+    
+    
+  };
+  let handlerForm =(e)=>{
+    e.preventDefault()
+    setCookie([...cookie,state])  
+
+  }
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col  min-h-screen">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+      <main className='bg-green-100'>
+        <header className="bg-green-500 p-5 text-4xl font-medium">
+          Cookie Stand Admin
+        </header>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
+        <section className='items-center flex justify-center '>
+        <form className="bg-green-300 p-5 m-10 w-3/4 rounded-md" onSubmit={(e)=>handlerForm(e)}>
+          <h2 className='text-2xl text-center font-semibold'>Create Cookie Stand</h2>
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+          <div className='flex py-5'>
+          <label className='mr-2 font-medium text-l'>Location</label>
+          <input className='w-full h-7' type='text' name="location" onChange={handleChange}/>
+          </div>
+          <br/>
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+          <section className="space-x-4 flex">
+          <div className='grid '>
+          <label className='ml-3 font-medium text-l'>Minimum Customers Per Hour</label>
+          <input name="minCustomers" type='number' className=' w-72 h-7' onChange={handleChange}/>
+          </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
+          <div className='grid'>
+          <label className='ml-3 font-medium text-l'>Maximum Customers Per Hour</label>
+          <input name="maxCustomers" type='number' className=' w-72 h-7' onChange={handleChange}/>
+          </div>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+          <div className='grid'>
+          <label className='ml-5 font-medium text-l' for="avg">Average Customers Per Hour</label>
+          <input name="angCookies" type='number' className='w-72 h-7' onChange={handleChange}/>
+          </div>
+          <input className='h-16 w-52 bg-green-500 font-medium text-xl' type="submit" value="Create" />
+          </section>
+         
+
+          
+        </form>
+        </section>
+        <section className='h-64  text-center' >
+          <p className='font-semibold'>Report Coming Soon ........</p>
+          {/* <p>{JSON.stringify(state)}</p> */}
+          { cookie &&
+          cookie.map(item=>{
+
+           return <p className='m-0'>{JSON.stringify(item)}</p>
+           
+          })}
+
+          </section>
+        <footer className='bg-green-500 text-xl font-medium mb-8  p-5'>&copy;2021</footer>
       </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+      
     </div>
   )
 }
