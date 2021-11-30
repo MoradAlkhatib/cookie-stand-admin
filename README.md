@@ -1,6 +1,9 @@
 # Next.js + Tailwind CSS Example
-
+lab 37
 ## pull https://github.com/MoradAlkhatib/cookie-stand-admin/pull/1
+lab 38
+## pull2 https://github.com/MoradAlkhatib/cookie-stand-admin/pull/2
+
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
